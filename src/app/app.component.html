@@ -1,0 +1,11 @@
+test
+
+<app-my-table
+  [items]="(burritoService.burritos$ | async)!" <!-- TODO -->
+  [columns]="burritoTableColumns"
+></app-my-table>
+<!-- app-paginator here -->
+
+<ng-template #tdAlertTemplate let-item="item">
+  <button (click)="showAlertFor(item)">!!!</button>
+</ng-template>

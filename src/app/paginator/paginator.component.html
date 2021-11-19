@@ -1,0 +1,13 @@
+<nav>
+  <ol>
+    <li><button (click)="goToPrevPage()">←</button></li> <!-- TODO -->
+    <li><button>[1]</button></li>
+    <li><button (click)="goToPage($event)">2</button></li> <!-- TODO -->
+    <li><button>3</button></li>
+    <li>...</li>
+    <li><button>N</button></li>
+    <li><button (click)="goToNextPage()">→</button></li> <!-- TODO -->
+  </ol>
+</nav>
+items per page:
+<input value="10">

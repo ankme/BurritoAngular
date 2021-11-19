@@ -1,0 +1,33 @@
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let column of columns">
+      <ng-container *ngTemplateOutlet="column.thTemplate!; context: { column: column, defaultTemplate: defaultThTemplate }"></ng-container>
+      <ng-container *ngIf="!column.thTemplate">
+        <ng-container *ngTemplateOutlet="defaultThTemplate; context: { column: column }"></ng-container>
+      </ng-container>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items">
+    <td *ngFor="let column of columns">
+      <ng-container *ngTemplateOutlet="column.tdTemplate!; context: { column: column, item: item, defaultTemplate: defaultTdTemplate }"></ng-container>
+      <ng-container *ngIf="!column.tdTemplate">
+        <ng-container *ngTemplateOutlet="defaultTdTemplate; context: {  column: column, item: item }"></ng-container>
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<ng-template #defaultThTemplate let-column="column">
+  {{ column.thText }}
+  <span *ngIf="column === sortByColumn">
+    {{ (sortDirection === SortDirection.ASC) ? '↑' : '↓' }}
+  </span>
+</ng-template>
+
+<ng-template #defaultTdTemplate let-column="column" let-item="item">
+  {{ item[column.key] }}
+</ng-template>
